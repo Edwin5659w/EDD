@@ -1,3 +1,4 @@
+<!-- crear_equipo.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,6 +15,9 @@
 
   <main>
     <form class="formulario" id="form-equipo">
+
+      <label for="id_equipo">ID del Equipo:</label>
+      <input type="text" id="id_equipo" name="id_equipo" readonly>
 
       <label for="categoria-equipo">Categoría:</label>
       <select id="categoria-equipo" name="categoria-equipo" required>
@@ -35,11 +39,21 @@
       <button type="submit" class="btn boton-volver" id="btn-crear-equipo" disabled>Crear Equipo</button>
 
     </form>
+  </main>
 
   <footer>
     &copy; 2025 Club Deportivo de Voleibol - Todos los derechos reservados.
   </footer>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      let base = 1000;
+      let id = localStorage.getItem("ultimoIdEquipo");
+      id = id ? parseInt(id) + 1 : base;
+      document.getElementById("id_equipo").value = id;
+      localStorage.setItem("ultimoIdEquipo", id);
+    });
+  </script>
   <script src="scripts/crear_equipo.js"></script>
 </body>
 </html>
